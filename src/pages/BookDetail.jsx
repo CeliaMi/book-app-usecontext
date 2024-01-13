@@ -13,9 +13,9 @@ export const BookDetail =() => {
             <h6 className='title-font font-medium text-whitleading-relaxed mb-6'>{book.writer}</h6>
             <h5 className='text-xs text-purple-400 tracking-widest font-medium title-font mb-1'>DESCRIPCIÓN</h5>
             <p className='font-medium text-whitleading-relaxed mb-6'>{book.book_description}</p>
-            <button className='ml-4 inline-flex text-gray-400 bg-gray-800 border-0 py-2 px-6 focus:outline-none hover:bg-gray-700 hover:text-white rounded text-lg'><Link to={`/editBook/${book.id}`}>Edit</Link></button>
+            <button className='ml-4 inline-flex text-gray-400 bg-gray-800 border-0 py-2 px-6 focus:outline-none hover:bg-gray-700 hover:text-white rounded text-lg'><Link to={`home/editBook/${book.id}`}>Edit</Link></button>
             <button className='ml-4 inline-flex text-gray-400 bg-gray-800 border-0 py-2 px-6 focus:outline-none hover:bg-gray-700 hover:text-white rounded text-lg'><Link onClick={() => deleteBook(book.id)}  to={"/"}>delete</Link></button>
-            <button className=' inline-flex text-gray-400 bg-indigo-800 border-0 py-2 px-6 focus:outline-none hover:bg-gray-700 hover:text-white rounded text-lg m-5'><Link to={"/"}>Back</Link></button>
+            <button className=' inline-flex text-gray-400 bg-indigo-800 border-0 py-2 px-6 focus:outline-none hover:bg-gray-700 hover:text-white rounded text-lg m-5'><Link to={"/home"}>Back</Link></button>
         </article>
   )
 }

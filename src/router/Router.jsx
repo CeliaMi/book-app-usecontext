@@ -8,7 +8,7 @@ import LayoutPublic from "../layout/LayoutPublic";
 import NotFound from "../pages/NotFound";
 import Home from "../pages/Home";
 import { getAllBooks } from "../services/BookService";
-import Register from "../components/Register";
+import Register from "../pages/Register";
 import LayoutPrivate from "../layout/LayoutPrivates";
 
 const router = createBrowserRouter([
@@ -53,7 +53,7 @@ const router = createBrowserRouter([
                 {
                   path: "home/newBook",
                   element: <CreateBook/>
-                },
+                }
               ]
             }
       ]}

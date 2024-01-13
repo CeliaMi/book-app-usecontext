@@ -10,8 +10,8 @@ const Navbar = () => {
      {user && (
       <>
         <div className="md:ml-auto flex flex-wrap items-center text-base justify-center mx-4 ">
-           <NavLink type="button" className="mr-5 hover:text-white " to="/">Todos mis Libros</NavLink> 
-           <button className='inline-flex text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded text-lg'><NavLink className=" hover:text-white" to="/newBook">Añadir nuevo libro🔮</NavLink></button> 
+           <NavLink type="button" className="mr-5 hover:text-white " to="/home">Todos mis Libros</NavLink> 
+           <button className='inline-flex text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded text-lg'><NavLink className="hover:text-white" to="/home/home/newBook">Añadir nuevo libro🔮</NavLink></button> 
            <button className='inline-flex text-white' onClick={() => setUser(null)}>Logout</button>
         </div>
       </>

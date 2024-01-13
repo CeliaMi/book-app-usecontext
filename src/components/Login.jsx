@@ -3,10 +3,11 @@ import Alert from "../components/Alert";
 import { useForm } from "react-hook-form";
 import Modal from "../components/Modal";
 import { handlerLoginUser } from "../middleware/userHandlers";
+import { useUserContext } from "../context/UserContext";
 
 const Login = () => {
 
-
+const { user, setUser } = useUserContext();
   const { register, handleSubmit, formState: { errors, isSubmitSuccessful } } = useForm()
 
     const handleForm = ( user ) =>{
@@ -45,12 +46,12 @@ const Login = () => {
                 {errors.password?.type === 'required' && <Alert text={"El campo password es requerido"}/>}
 
 
-                <button type="submit"  className=' text-white bg-indigo-500 border-0 py-2 w-full focus:outline-none hover:bg-indigo-600 rounded text-lg mt-3 mb-5'> Login🐱‍🚀</button>
+                <button type="submit"  className=' text-white bg-indigo-500 border-0 py-2 w-full focus:outline-none hover:bg-indigo-600 rounded text-lg mt-3 mb-5' onClick={() => setUser(true)}> Login🐱‍🚀</button>
               </div>
               
             </div>
           </form>
-          { isSubmitSuccessful && <Modal message={"✋🏽 Bienvenida"}/> }
+          {/* { isSubmitSuccessful && <Modal message={"✋🏽 Bienvenida"}/> } */}
           <div className='flex items-center mt-5 text-center '>
                     <h5 className='text-xs text-white-400 title-font'> ¿Es tu primer día?</h5>
                     <button className='text-xs text-indigo-400  font-medium title-font focus:outline-none hover:text-white rounded text-lg px-3'><Link to={"/register"}>Registrate</Link></button>
