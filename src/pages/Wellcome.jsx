@@ -1,0 +1,17 @@
+import Login from "../components/Login"
+
+
+ const Wellcome = () => {
+ 
+  return (
+    <section className="flex flex-col  w-full container px-5 py-2 mx-auto justify-center">
+      <h1 className="sm:text-3xl text-2xl font-medium title-font mb-5 text-white text-center" >Te damos la bienvenida a la app de libros</h1>
+      <div className="flex flex-col mb-20">     
+          <article className='bg-gray-800 bg-opacity-40 p-8 rounded p-2 lg:w-1/2 md:w-2/3 mx-auto'>
+            <Login/>
+          </article>
+      </div>   
+    </section>
+  )
+}
+export default Wellcome

@@ -1,6 +1,7 @@
 import { createBrowserRouter } from "react-router-dom"
 import { EditBook } from "../pages/EditBook";
 import { BookDetail } from "../pages/BookDetail"
+import Wellcome from "../pages/Wellcome";
 import CreateBook from "../pages/CreateBook";
 import { loadOneBook } from "../middleware/bookLoaders";import LayoutPublic from "../layout/layoutPublic";
 import NotFound from "../pages/NotFound";
@@ -20,8 +21,7 @@ const router = createBrowserRouter([
           children:[
             {
               index: true,
-              loader: getAllBooks ,
-              element:<Home/>
+              element:<Wellcome/>
             },
             {
               path: "/books",
