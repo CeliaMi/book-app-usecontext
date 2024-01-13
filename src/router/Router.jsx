@@ -3,10 +3,13 @@ import { EditBook } from "../pages/EditBook";
 import { BookDetail } from "../pages/BookDetail"
 import Wellcome from "../pages/Wellcome";
 import CreateBook from "../pages/CreateBook";
-import { loadOneBook } from "../middleware/bookLoaders";import LayoutPublic from "../layout/layoutPublic";
+import { loadOneBook } from "../middleware/bookLoaders";
+import LayoutPublic from "../layout/LayoutPublic";
 import NotFound from "../pages/NotFound";
 import Home from "../pages/Home";
 import { getAllBooks } from "../services/BookService";
+import Register from "../components/Register";
+import LayoutPrivate from "../layout/LayoutPrivates";
 
 const router = createBrowserRouter([
 
@@ -24,31 +27,38 @@ const router = createBrowserRouter([
               element:<Wellcome/>
             },
             {
-              path: "/books",
-              element: <Home/>,
-              loader: getAllBooks ,
-            },
-            {
-              path: "/books/:id",
-              loader: loadOneBook,
-              element: <BookDetail/>
-            },
-            {
-              path: "/editBook/:id",
-              loader: loadOneBook,
-              element: <EditBook/>
-            },
-            {
-              path: "/newBook",
-              element: <CreateBook/>
+              path: "/register",
+              element: <Register/>
             },
 
-          ]}
+            {
+              path: "/home",
+              element: <LayoutPrivate />,
+              children: [
+                {
+                  index: true,
+                  element: <Home/>,
+                  loader: getAllBooks ,
+                },
+                {
+                  path: "home/books/:id",
+                  loader: loadOneBook,
+                  element: <BookDetail/>
+                },
+                {
+                  path: "home/editBook/:id",
+                  loader: loadOneBook,
+                  element: <EditBook/>
+                },
+                {
+                  path: "home/newBook",
+                  element: <CreateBook/>
+                },
+              ]
+            }
       ]}
-
-
-
-  ]);
+  ]}
+]);
 
 
   
