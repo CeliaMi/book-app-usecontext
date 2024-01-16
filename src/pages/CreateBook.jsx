@@ -26,7 +26,7 @@ const CreateBook = () => {
             <div className='p-2 w-full'>
               <div className='relative'>
 
-                <label htmlFor="title" className='eading-7 text-sm text-gray-400'>Títlo:</label>
+                <label htmlFor="title" className='eading-7 text-sm text-gray-400'>Título:</label>
                 <input type="text" name="title" id="title" { ...register("title", { minLength: 2,  required: true,
                 })} className='w-full bg-gray-800 bg-opacity-40 rounded border border-gray-700 focus:border-indigo-500 focus:bg-gray-900 focus:ring-2 focus:ring-indigo-900 text-base outline-none text-gray-100 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out mb-5' />
 
@@ -49,7 +49,7 @@ const CreateBook = () => {
 
 
                 <button type="submit" className='inline-flex text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded text-lg mt-5'> Sellar mi compromiso✋🏽✨</button>
-                <button className='ml-4 inline-flex text-gray-400 bg-gray-800 border-0 py-2 px-6 focus:outline-none hover:bg-gray-700 hover:text-white rounded text-lg mt-5'><Link to={"/home"}>Back</Link></button>
+                <Link to={"/home"}><button className='ml-4 inline-flex text-gray-400 bg-gray-800 border-0 py-2 px-6 focus:outline-none hover:bg-gray-700 hover:text-white rounded text-lg mt-5'>Back</button></Link>
 
 
               </div>

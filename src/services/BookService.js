@@ -1,11 +1,23 @@
 import axios from "axios";
 
     export const API_URL = "http://localhost:3000/api/books";
-    
+
+    function getToken(){
+        var token = localStorage.getItem('token')
+        const headers = {
+            'Authorization': `Bearer ${token}`
+          };
+
+        return headers
+    }
+
+
     export const getAllBooks = async () => {
         try {
-        const res = await axios.get(API_URL);
-        return res.data ;
+        const headers = getToken()
+        const res = await axios.get(API_URL, { headers });
+        console.log(res)
+        return res.data;
         } catch (error){
             console.error('getAllBooks error ', error.message);
             throw error;
@@ -14,7 +26,8 @@ import axios from "axios";
 
     export const getOneBook = async (id) => {
         try {
-            const res = await axios.get(`${API_URL}/${id}`);
+            const headers = getToken()
+            const res = await axios.get(`${API_URL}/${id}`, { headers });
             return res;
         } catch (error) {
             console.error(`getOneBook ID ${id} error:`, error.message);
@@ -25,7 +38,9 @@ import axios from "axios";
 
     export const createBook = async (data) => {
         try {
-            const res = await axios.post(API_URL, data);
+            const headers = getToken()
+            const res = await axios.post(API_URL, data, { headers } );
+            console.log(res)
             return res;
         }  catch (error) {
             console.error('createBook error:', error.message);
@@ -36,9 +51,10 @@ import axios from "axios";
 
     export const deleteBook = async (id) => {
         try{
+        const headers = getToken()
         console.log("hola")
         let URL_ID = `${API_URL}/${id}`;
-        const res = await axios.delete(URL_ID);
+        const res = await axios.delete(URL_ID, { headers });
         return res;
         }  catch (error) {
             console.error(`deleteBook ID ${id} error:`, error.message);
@@ -47,8 +63,9 @@ import axios from "axios";
 
     export const updateBook = async (data) => {
         try{
+        const headers = getToken()
         let URL_ID = `${API_URL}/${data.id}`;
-        const res = await axios.put(URL_ID, data);
+        const res = await axios.put(URL_ID,data, { headers });
         return res;
         } catch(error) {
             console.error(`Error en updateBook con ID ${data.id}:`, error.message);

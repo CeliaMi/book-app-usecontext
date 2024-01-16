@@ -7,6 +7,7 @@ import Modal from "../components/Modal";
 export const EditBook = () => {
 
  const { book } = useLoaderData();
+ console.log(book)
 
  const { register, handleSubmit, formState: { errors, isSubmitSuccessful } } = useForm({defaultValues:  {
   title: book.title,
@@ -27,7 +28,7 @@ export const EditBook = () => {
       <form onSubmit={handleSubmit(handleForm)} className='flex flex-wrap -m-2' >
         <div className='p-2 w-full'>
         <div className='relative'>
-              <label htmlFor="title" className='eading-7 text-sm text-gray-400'>Títlo:</label>
+              <label htmlFor="title" className='eading-7 text-sm text-gray-400'>Título:</label>
               <input type="text" name="title" id="title" { ...register("title", { minLength: 2,  required: true,
                 })} className='w-full bg-gray-800 bg-opacity-40 rounded border border-gray-700 focus:border-indigo-500 focus:bg-gray-900 focus:ring-2 focus:ring-indigo-900 text-base outline-none text-gray-100 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out mb-5'/>
 
@@ -48,7 +49,7 @@ export const EditBook = () => {
                 {errors.book_description?.type === 'required' && <Alert text={"El campo descripción es requerido"}/>}
                 {errors.book_description?.type === 'minLength' && <Alert text={"No seas así...cuentanos un poco más..."}/>}
                 
-              <button type="submit" className='inline-flex text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded text-lg mt-5'> Atualizar✨</button>
+              <button type="submit" className='inline-flex text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded text-lg mt-5'> Actualizar✨</button>
               <button className='ml-4 inline-flex text-gray-400 bg-gray-800 border-0 py-2 px-6 focus:outline-none hover:bg-gray-700 hover:text-white rounded text-lg mt-5'><Link to={"/home"}>Back</Link></button>
         </div>
         </div>

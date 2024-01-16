@@ -3,15 +3,26 @@ import Alert from "../components/Alert";
 import { useForm } from "react-hook-form";
 import Modal from "../components/Modal";
 import { handlerRegisterUser } from "../middleware/userHandlers";
+import { useUserContext } from "../context/UserContext";
+import { useNavigate } from "react-router-dom";
 
 const Register = () => {
-
+  const navigate = useNavigate();
+  const { setUser,  setIsAuthenticated} = useUserContext();
 
   const { register, handleSubmit, formState: { errors, isSubmitSuccessful } } = useForm()
 
-    const handleForm = ( user ) =>{
+    const handleForm = async( user ) =>{
       try {
-        handlerRegisterUser(user)
+        const res = await handlerRegisterUser(user)
+        if (res.data.sesiondata.token) {
+          setIsAuthenticated(true)
+          localStorage.setItem('token', res.data.sesiondata.token)
+          localStorage.setItem('role', res.data.sesiondata.user.role)
+          setUser(res.data.sesiondata)
+          console.log('Logged in!')
+          navigate("/home");
+        }
         console.log('Logged in!');
       } catch (error) {
         console.log('Login failed.');
@@ -38,7 +49,7 @@ const Register = () => {
                 {errors.name?.type === 'required' && <Alert text={"El campo nombre es requerido"}/>} 
 
                 <label htmlFor="writer" className='eading-7 text-sm text-gray-400'>Email:</label>
-                <input type="email" autoComplete="on" name="email" id="email" { ...register("name", {  required: true
+                <input type="email" autoComplete="on" name="email" id="email" { ...register("email", {  required: true
                 })} className='w-full bg-gray-800 bg-opacity-40 rounded border border-gray-700 focus:border-indigo-500 focus:bg-gray-900 focus:ring-2 focus:ring-indigo-900 text-base outline-none text-gray-100 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out mb-5'/>
 
                 {errors.email?.type === 'required' && <Alert text={"El campo emial es requerido"}/>}

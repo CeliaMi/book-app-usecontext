@@ -10,7 +10,7 @@ const Modal = ( { message }) => {
               <div className="m-9 p-9 flex items-center justify-center bg-indigo-800 rounded mt-2 ">
                         <p className=" text-purple-400 tracking-widest font-medium title-font mb-1">
                         {message}</p>
-                    <button className='ml-4 inline-flex text-gray-400 bg-gray-800 border-0 py-2 px-6 focus:outline-none hover:bg-gray-700 hover:text-white rounded text-lg '><Link to={"/home"}>x</Link></button>
+                        <Link to={"/home"}><button className='ml-4 inline-flex text-gray-400 bg-gray-800 border-0 py-2 px-6 focus:outline-none hover:bg-gray-700 hover:text-white rounded text-lg '>x</button></Link>
               </div>
               </div>
             </div>

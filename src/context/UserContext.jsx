@@ -1,24 +1,19 @@
  import { createContext, useContext, useState } from "react"
-// import { handlerLoginUser } from '../middleware/userHandlers'
-
 
 export const UserContext = createContext()
 
 const UserProvider = ({children}) =>{
 
-    const [user, setUser] = useState(false)
+    const [user, setUser] = useState(null)
+    const [isAuthenticated, setIsAuthenticated] = useState(null)
 
-    // const checkUser = async () => {
 
-    //     const storedToken = localStorage.getItem("authToken")
+    // const storedToken = localStorage.getItem("token")
+    // setToken(storedToken)
 
-    //     if (storedToken) {
-    //         const userData = await handlerLoginUser.checkUser(storedToken);
-    //         setUser(userData);
-    //     }
 
     return(
-        <UserContext.Provider value = {{user, setUser}}>
+        <UserContext.Provider value = {{user, setUser, isAuthenticated, setIsAuthenticated}}>
         {children}
         </UserContext.Provider>
     )
@@ -27,4 +22,6 @@ const UserProvider = ({children}) =>{
 
 export default UserProvider
 
-export const useUserContext = () => useContext(UserContext);
+
+
+export const useUserContext = () => useContext(UserContext)
